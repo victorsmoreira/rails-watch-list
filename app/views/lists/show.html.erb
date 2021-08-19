@@ -1,0 +1,15 @@
+<div class="container">
+
+  <h1><%= @list.name %></h1>
+  <%= link_to 'Add a movie to this list', new_list_bookmark_path(@list) %>
+  <% @list.movies.each do |movie| %>
+    <p>
+      <%= movie.title %>
+      <% bookmark = @list.bookmarks.find{|bookm| bookm.movie = movie} %>
+      <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: 'Remove bookmark from list?'} %>
+    </p>
+  <% end %>
+
+  <br>
+  <%= link_to 'Back to lists', lists_path %>
+</div>
