@@ -3,11 +3,21 @@
   <h1><%= @list.name %></h1>
   <%= link_to 'Add a movie to this list', new_list_bookmark_path(@list) %>
   <% @list.movies.each do |movie| %>
-    <p>
-      <%= movie.title %>
+
+
+    <div class="card-movie">
+      <img src=<%= movie.poster_url %> />
+      <div class="card-movie-infos">
+        <div>
+          <h2><%= movie.title %> ● <span class='card-movie-rating'><%= movie.rating %></span></h2>
+          <p><%= movie.overview %></p>
+        </div>
       <% bookmark = @list.bookmarks.find{|bookm| bookm.movie = movie} %>
-      <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: 'Remove bookmark from list?'} %>
-    </p>
+        <p class='movie-delete'><%= link_to '<i class="fas fa-times">'.html_safe, bookmark_path(bookmark), method: :delete, data: {confirm: 'Remove bookmark from list?'} %></i></p>
+        <h2 class="card-movie-rating"><%= movie.rating %></h2>
+      </div>
+    </div>
+
   <% end %>
 
   <br>
