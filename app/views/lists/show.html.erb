@@ -16,7 +16,7 @@
   <% @list.movies.each do |movie| %>
 
     <div class="movie-card">
-      <% bookmark = @list.bookmarks.find{|bookm| bookm.movie = movie} %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
       <%= image_tag movie.poster_url %>
       <div class="movie-card-info">
         <div class="d-flex justify-content-start align-items-center m-0">
