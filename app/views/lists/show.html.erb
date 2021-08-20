@@ -16,6 +16,7 @@
   <% @list.movies.each do |movie| %>
 
     <div class="movie-card">
+      <% bookmark = @list.bookmarks.find{|bookm| bookm.movie = movie} %>
       <%= image_tag movie.poster_url %>
       <div class="movie-card-info">
         <div class="d-flex justify-content-start align-items-center m-0">
@@ -23,8 +24,12 @@
           <h3> • <%= movie.rating %> <i class="fas fa-star text-warning"></i></h3>
         </div>
         <p><%= movie.overview %></p>
+
+        <div class="movie-comment">
+          <i class="fas fa-quote-left"></i>
+          <p><%= bookmark.comment %></p>
+        </div>
       </div>
-      <% bookmark = @list.bookmarks.find{|bookm| bookm.movie = movie} %>
       <p class='movie-card-delete'><%= link_to '<i class="fas fa-times">'.html_safe, bookmark_path(bookmark), class: 'text-secondary' ,method: :delete, data: {confirm: 'Remove bookmark from list?'} %></i></p>
     </div>
   <% end %>
