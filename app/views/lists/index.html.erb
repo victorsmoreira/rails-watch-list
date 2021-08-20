@@ -14,17 +14,4 @@
 
     <% end %>
   </div>
-
-
-  <h2>sandbox</h2>
-
-  <% movie = @lists.first.movies.last %>
-  <div class="movie-card">
-    <%= image_tag movie.poster_url %>
-    <div class="movie-card-info">
-      <h2><%= movie.title %></h2>
-      <p><%= movie.overview %></p>
-    </div>
-  </div>
-
 </div>
