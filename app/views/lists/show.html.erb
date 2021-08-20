@@ -1,4 +1,5 @@
-<div class="list-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key %>')">
+<% list_image_url = cl_image_path @list.photo.key || 'https://source.unsplash.com/400x300/?popcorn' %>
+<div class="list-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list_image_url %>')">
 </div>
 
 <div class="container">
@@ -6,8 +7,9 @@
   <div class="d-flex justify-content-between align-items-center">
     <h1><%= @list.name %></h1>
     <div>
-      <%= link_to 'Edit list', edit_list_path(@list), class: 'text-secondary mr-2' %>
-      <%= link_to 'Add a movie to this list', new_list_bookmark_path(@list), class: 'text-success' %>
+      <%= link_to 'Edit list', edit_list_path(@list), class: 'btn btn-outline-secondary mr-2' %>
+      <%= link_to 'Add a movie', new_list_bookmark_path(@list), class: 'btn btn-outline-success' %>
+      <%= link_to 'Delete list', list_path(@list), method: :delete, data: { confirm: "Deseja mesmo exlcuir a lista?" }, class: 'btn btn-outline-danger' %>
     </div>
   </div>
 
