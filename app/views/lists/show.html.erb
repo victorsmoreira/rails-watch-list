@@ -7,7 +7,7 @@
   <div class="d-flex justify-content-between align-items-center">
     <h1><%= @list.name %></h1>
     <div>
-      <%= link_to 'Edit list', edit_list_path(@list), class: 'btn btn-outline-secondary mr-2' %>
+      <%= link_to 'Edit list', edit_list_path(@list), class: 'btn btn-outline-secondary' %>
       <%= link_to 'Add a movie', new_list_bookmark_path(@list), class: 'btn btn-outline-success' %>
       <%= link_to 'Delete list', list_path(@list), method: :delete, data: { confirm: "Deseja mesmo exlcuir a lista?" }, class: 'btn btn-outline-danger' %>
     </div>

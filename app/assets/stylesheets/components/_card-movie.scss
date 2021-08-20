@@ -36,3 +36,10 @@
     text-overflow: ellipsis;
   }
 }
+
+// Small devices (landscape phones, 576px and down)
+@media (max-width: 576px) {
+  .movie-card img {
+    display: none;
+  }
+}
