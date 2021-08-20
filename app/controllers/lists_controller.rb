@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: %i[show]
+  before_action :set_list, only: %i[show edit update]
 
   def index
     @lists = List.all
@@ -21,6 +21,13 @@ class ListsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    @list.update(list_params)
+    redirect_to list_path(@list)
+  end
+
   private
 
   def set_list
@@ -28,6 +35,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end
